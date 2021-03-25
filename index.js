@@ -1,7 +1,6 @@
 const nomePetshop = "PETSHOP AVANADE";
 
-let pets = [
-    {
+let pets = [{
         nome: 'Costelinha',
         tipo: 'cachorro',
         idade: 5,
@@ -9,7 +8,7 @@ let pets = [
         peso: 3,
         tutor: 'Doug',
         contato: '(11) 98899-4545',
-        vacinado: true,
+        vacinado: false,
         servicos: ['banho', 'tosa']
     },
     {
@@ -38,18 +37,22 @@ let pets = [
 
 const listarPets = () => {
 
-    for(let pet of pets){
+    for (let pet of pets) {
         //template string
         console.log(`${pet.nome}, ${pet.idade}, ${pet.tipo}, ${pet.raca}`);
     }
 
 }
 
-listarPets();
+const vacinarPet = pet => {
+    if (!pet.vacinado) {
+        pet.vacinado = true;
+        console.log(`${pet.nome} foi vacinado com sucesso!`);
+    } else {
+        console.log(`Ops, ${pet.nome} já está vacinado!`);
+    }
+}
 
-
-
-
-
-
-
+console.log(pets[0]);
+vacinarPet(pets[0]);
+console.log(pets[0]);
