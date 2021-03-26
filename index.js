@@ -8,6 +8,10 @@ const listarPets = () => {
     for (let pet of pets) {
         //template string
         console.log(`${pet.nome}, ${pet.idade}, ${pet.tipo}, ${pet.raca}`);
+
+        for (const servico of pet.servicos) {
+            console.log(`${servico.data} - ${servico.nome}`);
+        }
     }
 }
 
@@ -52,7 +56,7 @@ const adicionarPet = novoPet => {
 
 const darBanhoPet = pet => {
     pet.servicos.push({
-        'serviço':'banho',
+        'nome':'banho',
         'data': moment().format('DD-MM-YYYY')
     });
     console.log(`${pet.nome} está de banho tomado!`);
@@ -60,7 +64,7 @@ const darBanhoPet = pet => {
 
 const tosarPet = pet => {
     pet.servicos.push({
-        'serviço':'tosa',
+        'nome':'tosa',
         'data': moment().format('DD-MM-YYYY')
     });
     console.log(`${pet.nome} está com cabelinho na régua :)`);
@@ -68,13 +72,16 @@ const tosarPet = pet => {
 
 const apararUnhasPet = pet => {
     pet.servicos.push({
-        'serviço':'corte de unhas',
+        'nome':'corte de unhas',
         'data': moment().format('DD-MM-YYYY')
     });
     console.log(`${pet.nome} está de unhas aparadas!`);
 };
 
-
+darBanhoPet(pets[0]);
+darBanhoPet(pets[1]);
+apararUnhasPet(pets[2]);
+console.log("-----------")
 listarPets();
 
 // console.log(pets)

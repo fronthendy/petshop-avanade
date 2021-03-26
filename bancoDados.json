@@ -19,7 +19,7 @@
         "tutor": "Charlie Brown",
         "contato": "(11) 95656-4545",
         "vacinado": true,
-        "servicos": ["banho"]
+        "servicos": []
     },
     {
         "nome": "Satanas",
@@ -30,7 +30,7 @@
         "tutor": "Bruxa do 71",
         "contato": "(11) 97171-7171",
         "vacinado": true,
-        "servicos": ["banho", "corte de unha"]
+        "servicos": []
     }
 ]
 }
