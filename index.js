@@ -81,6 +81,7 @@ const apararUnhasPet = pet => {
 darBanhoPet(pets[0]);
 darBanhoPet(pets[1]);
 apararUnhasPet(pets[2]);
+
 console.log("-----------")
 listarPets();
 
