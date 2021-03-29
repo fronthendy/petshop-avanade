@@ -1,13 +1,20 @@
 const moment = require('moment');
-const nomePetshop = "PETSHOP AVANADE";
-const bancoDados = require('./bancoDados.json');
+const fs = require('fs');
+let bancoDados = fs.readFileSync('./bancoDados.json');
 
-let pets = bancoDados.pets;
+bancoDados = JSON.parse(bancoDados);
+
+const atualizarBanco = () => {
+    //conversão de objeto javascript para JSON
+    let petsAtualizado = JSON.stringify(bancoDados);
+    //atualização do arquivo bancoDados.json
+    fs.writeFileSync('bancoDados.json', petsAtualizado, 'utf-8');
+}
 
 const listarPets = () => {
-    for (let pet of pets) {
+    for (let pet of bancoDados.pets) {
         //template string
-        console.log(`${pet.nome}, ${pet.idade}, ${pet.tipo}, ${pet.raca}`);
+        console.log(`${pet.nome}, ${pet.idade}, ${pet.tipo}, ${pet.raca}, ${(pet.vacinado) ? 'vacinado': 'não vacinado'}`);
 
         for (const servico of pet.servicos) {
             console.log(`${servico.data} - ${servico.nome}`);
@@ -29,7 +36,7 @@ const campanhaVacina = () => {
     console.log("vacinando...");
 
     let petVacinadosCampanha = 0;
-    for (let pet of pets) {
+    for (let pet of bancoDados.pets) {
         if (!pet.vacinado) {
             vacinarPet(pet);
             petVacinadosCampanha++;
@@ -39,19 +46,9 @@ const campanhaVacina = () => {
 };
 
 const adicionarPet = novoPet => {
-    if (typeof novoPet == "object" && validarDados(novoPet)) {
-        // adiciona o pet
-        novoPet.nome = String(novoPet.nome);
-        novoPet.idade = parseInt(novoPet.idade);
-
-        if (!novoPet.servicos) {
-            novoPet.servicos = [];
-        }
-
-        pets.push(novoPet);
-    } else {
-        console.log("Ops, insira um argumento valido!");
-    }
+        bancoDados.pets.push(novoPet);
+        atualizarBanco();
+        console.log(`${novoPet.nome} foi adicionado com sucesso!`);
 }
 
 const darBanhoPet = pet => {
@@ -78,11 +75,19 @@ const apararUnhasPet = pet => {
     console.log(`${pet.nome} está de unhas aparadas!`);
 };
 
-darBanhoPet(pets[0]);
-darBanhoPet(pets[1]);
-apararUnhasPet(pets[2]);
+// darBanhoPet(bancoDados.pets[0]);
 
-console.log("-----------")
-listarPets();
+// console.log("-----------")
+// listarPets();
 
-// console.log(pets)
+adicionarPet({
+    "nome": "Romarinho",
+    "tipo": "cachorro",
+    "idade": 3,
+    "raca": "American",
+    "peso": 28,
+    "tutor": "Bruno",
+    "contato": "(11) 99999-9999",
+    "vacinado": true,
+    "servicos": []
+});
