@@ -80,6 +80,12 @@ const apararUnhasPet = pet => {
     console.log(`${pet.nome} está de unhas aparadas!`);
 };
 
+const atenderCliente = (pet, servico) => {
+    console.log(`Olá, ${pet.nome}`);
+    servico(pet);
+    console.log('Até mais!');
+}
+
 // darBanhoPet(bancoDados.pets[1]);
 
 // console.log("-----------")
