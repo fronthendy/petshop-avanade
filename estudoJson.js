@@ -31,15 +31,27 @@ const apararUnhas = () => {
 
 //desestruturação
 
-let pessoa = {
-    nome: 'Iago',
-    idade: 25,
-    profissao: 'dev',
-    contato: '119999999',
-    habilidades: ['node.js', 'mysql', 'javascript', 'html']
-}
+// let pessoa = {
+//     nome: 'Iago',
+//     idade: 25,
+//     profissao: 'dev',
+//     contato: '119999999',
+//     habilidades: ['node.js', 'mysql', 'javascript', 'html']
+// }
 
-let {nome, contato} = pessoa;
+// let {nome, contato} = pessoa;
 
 // console.log(`${pessoa.nome} - ${pessoa.contato}`);
-console.log(`${nome} - ${contato}`);
+// console.log(`${nome} - ${contato}`);
+
+let turma1 = ['Anna', 'João', 'Vinicius', 'Igor'];
+let turma2 = ['Janaina', 'Gustavo', 'Adriana', 'Isaac', 'Anna'];
+
+// let turmasAvanade = [turma1, turma2];
+// let turmasAvanade = [...turma1, ...turma2];
+
+// console.log(turmasAvanade);
+
+// turma1.push(turma2);
+// console.log(turma1)
+

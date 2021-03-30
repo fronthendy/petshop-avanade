@@ -53,10 +53,12 @@ const campanhaVacina = () => {
     console.log(`${petVacinadosCampanha} pets foram vaciados nessa campanha!`);
 };
 
-const adicionarPet = novoPet => {
-    bancoDados.pets.push(novoPet);
+const adicionarPet = (novoPet) => {
+    bancoDados.pets.push(...novoPet);
     atualizarBanco();
-    console.log(`${novoPet.nome} foi adicionado com sucesso!`);
+    novoPet.forEach((pet)=>{
+        console.log(`${pet.nome} foi adicionado com sucesso!`);
+    })
 }
 
 const darBanhoPet = pet => {
@@ -145,7 +147,7 @@ const filtrarTutor = (nomeTutor) => {
     })
 }
 
-filtrarTutor('Doug');
+// filtrarTutor('Doug');
 
 // console.log(contatoTutor(bancoDados.pets[0]));
 // console.log(filtrarTipoPet('gato'));
@@ -163,14 +165,37 @@ filtrarTutor('Doug');
 
 // console.log("-----------")
 // listarPets();
-// adicionarPet({
-//     "nome": "Bidu",
-//     "tipo": "gato",
-//     "idade": 3,
-//     "raca": "American",
-//     "peso": 28,
-//     "tutor": "Doug",
-//     "contato": "(11) 99999-9999",
-//     "vacinado": true,
-//     "servicos": []
-// });
+
+adicionarPet([{
+    "nome": "Bidu",
+    "tipo": "gato",
+    "idade": 3,
+    "raca": "American",
+    "peso": 28,
+    "tutor": "Doug",
+    "contato": "(11) 99999-9999",
+    "vacinado": true,
+    "servicos": []
+},
+{
+    "nome": "Eva",
+    "tipo": "gato",
+    "idade": 3,
+    "raca": "American",
+    "peso": 28,
+    "tutor": "Hendy",
+    "contato": "(11) 99999-9999",
+    "vacinado": true,
+    "servicos": []
+},
+{
+    "nome": "Tag",
+    "tipo": "gato",
+    "idade": 3,
+    "raca": "American",
+    "peso": 28,
+    "tutor": "Doug",
+    "contato": "(11) 99999-9999",
+    "vacinado": true,
+    "servicos": []
+}]);
