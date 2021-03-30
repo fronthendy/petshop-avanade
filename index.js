@@ -53,10 +53,13 @@ const campanhaVacina = () => {
     console.log(`${petVacinadosCampanha} pets foram vaciados nessa campanha!`);
 };
 
-const adicionarPet = (novoPet) => {
-    bancoDados.pets.push(...novoPet);
+const adicionarPet = (...novosPets) => {
+    novosPets.forEach((novoPet) => {
+        bancoDados.pets.push(novoPet);
+    })
+
     atualizarBanco();
-    novoPet.forEach((pet)=>{
+    novosPets.forEach((pet) => {
         console.log(`${pet.nome} foi adicionado com sucesso!`);
     })
 }
@@ -166,7 +169,7 @@ const filtrarTutor = (nomeTutor) => {
 // console.log("-----------")
 // listarPets();
 
-adicionarPet([{
+adicionarPet({
     "nome": "Bidu",
     "tipo": "gato",
     "idade": 3,
@@ -198,4 +201,4 @@ adicionarPet([{
     "contato": "(11) 99999-9999",
     "vacinado": true,
     "servicos": []
-}]);
+});
