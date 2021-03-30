@@ -33,17 +33,21 @@ const vacinarPet = pet => {
 }
 
 const campanhaVacina = () => {
-    console.log("Campanha de vacina 2020");
+    console.log("Campanha de vacina 2021");
     console.log("vacinando...");
 
     let petVacinadosCampanha = 0;
-    for (let pet of bancoDados.pets) {
+
+    bancoDados.pets = bancoDados.pets.map((pet) => {
         if (!pet.vacinado) {
             vacinarPet(pet);
             petVacinadosCampanha++;
         }
-    }
-    atualizarBanco();
+
+        return pet;
+    });
+
+    // atualizarBanco();
     console.log(`${petVacinadosCampanha} pets foram vaciados nessa campanha!`);
 };
 
@@ -86,11 +90,43 @@ const atenderCliente = (pet, servico) => {
     console.log('Até mais!');
 }
 
-// darBanhoPet(bancoDados.pets[1]);
+const buscarPet = (nomePet) => {
 
+    let petEncontrado = bancoDados.pets.find((pet) => {
+        return pet.nome == nomePet;
+    });
+
+    return petEncontrado ? petEncontrado : `Nenhum pet encontrado com nome ${nomePet}`;
+}
+
+const filtrarTipoPet = (tipoPet) => {
+
+    let petsEncontrados = bancoDados.pets.filter((pet) => {
+        return pet.tipo == tipoPet;
+    });
+
+    return petsEncontrados;
+}
+
+const clientePremium = (pet) => {
+    let nServicos = bancoDados.pets.reduce((total, pet) => {
+        return total + pet.servicos.length;
+    })
+
+    if (nServicos > 5) {
+        console.log(`Olá, ${pet.nome}! Você é um cliente especial e ganhou um descontão!`);
+    } else {
+        console.log(`Olá, ${pet.nome}! Você ainda não tem descontos disponiveis!`);
+    }
+}
+
+// console.log(clientePremium(bancoDados.pets[2]));
+
+campanhaVacina();
+
+// darBanhoPet(bancoDados.pets[1]);
 // console.log("-----------")
 // listarPets();
-
 // adicionarPet({
 //     "nome": "Romarinho",
 //     "tipo": "cachorro",
