@@ -114,15 +114,41 @@ const filtrarTipoPet = (tipoPet) => {
 }
 
 const clientePremium = (pet) => {
+    // let nome = pet.nome;
+    let {nome} = pet;
+
     let nServicos = pet.servicos.length;
 
     if (nServicos > 5) {
-        console.log(`Olá, ${pet.nome}! Você é um cliente especial e ganhou um descontão!`);
+        console.log(`Olá, ${nome}! Você é um cliente especial e ganhou um descontão!`);
     } else {
-        console.log(`Olá, ${pet.nome}! Você ainda não tem descontos disponiveis!`);
+        console.log(`Olá, ${nome}! Você ainda não tem descontos disponiveis!`);
     }
 }
 
+const contatoTutor = (pet) => {
+    let {nome, tutor, contato} = pet;
+    
+    return `Tutor: ${tutor}
+    Contato: ${contato}
+    Pet: ${nome}`;
+}
+
+const filtrarTutor = (nomeTutor) => {
+    let petsTutor = bancoDados.pets.filter((pet) => {
+        return pet.tutor == nomeTutor;
+    });
+    
+    console.log(`Pets do tutor ${nomeTutor}:`)
+    petsTutor.forEach((pet) => {
+        console.log(`${pet.nome} - ${pet.tipo}`)
+    })
+}
+
+filtrarTutor('Doug');
+
+// console.log(contatoTutor(bancoDados.pets[0]));
+// console.log(filtrarTipoPet('gato'));
 // darBanhoPet(bancoDados.pets[4]);
 // darBanhoPet(bancoDados.pets[4]);
 // darBanhoPet(bancoDados.pets[4]);
@@ -138,12 +164,12 @@ const clientePremium = (pet) => {
 // console.log("-----------")
 // listarPets();
 // adicionarPet({
-//     "nome": "Romarinho",
-//     "tipo": "cachorro",
+//     "nome": "Bidu",
+//     "tipo": "gato",
 //     "idade": 3,
 //     "raca": "American",
 //     "peso": 28,
-//     "tutor": "Bruno",
+//     "tutor": "Doug",
 //     "contato": "(11) 99999-9999",
 //     "vacinado": true,
 //     "servicos": []

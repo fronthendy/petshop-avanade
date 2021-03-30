@@ -159,6 +159,17 @@
       "contato": "(11) 99999-9999",
       "vacinado": true,
       "servicos": []
+    },
+    {
+      "nome": "Bidu",
+      "tipo": "gato",
+      "idade": 3,
+      "raca": "American",
+      "peso": 28,
+      "tutor": "Doug",
+      "contato": "(11) 99999-9999",
+      "vacinado": true,
+      "servicos": []
     }
   ]
 }
