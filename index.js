@@ -51,7 +51,7 @@ const campanhaVacina = () => {
 
     // atualizarBanco();
     console.log(`${petVacinadosCampanha} pets foram vaciados nessa campanha!`);
-};
+}
 
 const adicionarPet = (...novosPets) => {
     novosPets.forEach((novoPet) => {
